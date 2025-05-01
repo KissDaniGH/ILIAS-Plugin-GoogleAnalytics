@@ -4,7 +4,8 @@ Sets GA4 Measurement ID to track page views with Google Analytics.
 
 ## Supported Versions
 
-[![Minimum ILIAS Version](https://img.shields.io/badge/Minimum_ILIAS-10.0-orange.svg)](https://ilias.de/) [![Maximum ILIAS Version](https://img.shields.io/badge/Maximum_ILIAS-10.99-orange.svg)](https://ilias.de/)
+* [![Minimum ILIAS Version](https://img.shields.io/badge/Minimum_ILIAS-10.0-orange.svg)](https://ilias.de/)
+* [![Maximum ILIAS Version](https://img.shields.io/badge/Maximum_ILIAS-10.99-orange.svg)](https://ilias.de/)
 
 ## Installation
 
