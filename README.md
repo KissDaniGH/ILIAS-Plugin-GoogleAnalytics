@@ -42,23 +42,17 @@ You need a Google Analytics Measurement ID to set it up.
 * German - Deutch
 * Hungarian - Magyar
 
-#### Bugs
+### Bugs
 
 There are no known bugs.
 
-#### License
-
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL"
-in this document are to be interpreted as described in
-[RFC 2119](https://www.ietf.org/rfc/rfc2119.txt).
+### License
 
 See [LICENSE](./LICENSE) file in this repository.
 
 ### Buy me a virtual coffee
 
-If you find it useful, feel free to buy me a vitrual coffee.
-https://buymeacoffee.com/kissdani
+If you find it useful, feel free to buy me a vitrual coffee: https://buymeacoffee.com/kissdani
 
 ### Contact
 
