@@ -1,0 +1,5 @@
+<!-- language file start -->
+measurement_id#:#Measurement_id
+measurement_id_info#:#The Measurement ID is located in your Google Analytics account (for example: 'G-XXXXXXXXXX').
+plugin_configuration#:#Google Analytics plugin configuration
+warning_no_measurement_id#:#A valid Google Analytics Measurement ID is required to use this plugin

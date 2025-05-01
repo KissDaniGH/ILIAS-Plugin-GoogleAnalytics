@@ -1,0 +1,5 @@
+<!-- language file start -->
+measurement_id#:#Mérési azonosító
+measurement_id_info#:#A Mérési azonosító a Google Analytics fiókban található (például: 'G-XXXXXXXXXX').
+plugin_configuration#:#Google Analytics bővítmény beállítása 
+warning_no_measurement_id#:#Egy érvényes Google Analytics Mérési azonosító szükséges a bővítmény használatához.
