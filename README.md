@@ -16,7 +16,7 @@ Sets GA4 Measurement ID to track page views with Google Analytics.
 * Make sure the folder `GoogleAnalytics` and its contents are readable for your webuser.
 * Change to your ILIAS webroot directory
 * Update the autoloader as webuser.
-* Finalize the installation through the web interface in Administration -> Extending ILIAS -> Plugins.
+* Finalize the installation through the web interface in `Administration -> Extending ILIAS -> Plugins`.
 
 ```bash
 cd /var/www/html/
@@ -29,11 +29,11 @@ chmod 755 public/Customizing/global/plugins/Services/UIComponent/UserInterfaceHo
 sudo -uwww-data composer du  
 ``` 
 
-As an ILIAS administrator go to 'Administration -> Extending ILIAS -> Plugins' and install, configure and activate the plugin.
+As an ILIAS administrator go to `Administration -> Extending ILIAS -> Plugins` and install, configure and activate the plugin.
 
 ## Configuration
 
-As an ILIAS administrator go to "Administration -> Extending ILIAS -> Plugins" and configure the plugin.
+As an ILIAS administrator go to `Administration -> Extending ILIAS -> Plugins` and configure the plugin.
 
 You need a Google Analytics Measurement ID to set it up.
 
