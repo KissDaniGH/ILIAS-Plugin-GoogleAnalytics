@@ -25,7 +25,7 @@ cd public/Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/
 
 ```bash
 wget https://github.com/KissDaniGH/ILIAS-Plugin-GoogleAnalytics/archive/refs/tags/v.1.0.0.zip
-unzip v1.0.0.zip -d ./
+unzip v.1.0.0.zip -d ./
 mv ILIAS-Plugin-GoogleAnalytics-v.1.0.0 GoogleAnalytics
 ```
 
