@@ -60,7 +60,7 @@ class ilGoogleAnalyticsPlugin extends ilUserInterfaceHookPlugin
 
 	public function getMeasurementId(): string
 	{
-		return $this->measurement_id;
+		return $this->measurement_id ?? '';
 	}
 }
 ?>
