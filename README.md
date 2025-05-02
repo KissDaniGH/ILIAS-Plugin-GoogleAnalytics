@@ -19,13 +19,14 @@ Sets GA4 Measurement ID to track page views with Google Analytics.
 
 ```bash
 cd /var/www/html/
-mkdir -p public/Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/  
-cd public/Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/  
+mkdir -p public/Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/
+cd public/Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/
 ```
 
 ```bash
 wget https://github.com/KissDaniGH/ILIAS-Plugin-GoogleAnalytics/archive/refs/tags/v.1.0.0.zip
 unzip v.1.0.0.zip -d ./
+rm v.1.0.0.zip
 mv ILIAS-Plugin-GoogleAnalytics-v.1.0.0 GoogleAnalytics
 ```
 
@@ -39,7 +40,7 @@ git clone https://github.com/KissDaniGH/ILIAS-Plugin-GoogleAnalytics.git GoogleA
 cd /var/www/html/
 chown www-data:www-data public/Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/GoogleAnalytics/ -R
 chmod 755 public/Customizing/global/plugins/Services/UIComponent/UserInterfaceHook/GoogleAnalytics/ -R
-sudo -uwww-data composer du  
+sudo -uwww-data composer du
 ``` 
 
 As an ILIAS administrator go to 'Administration -> Extending ILIAS -> Plugins' and install, configure and activate the plugin.
