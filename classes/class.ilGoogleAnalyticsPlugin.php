@@ -12,7 +12,7 @@ class ilGoogleAnalyticsPlugin extends ilUserInterfaceHookPlugin
     public const PID = 'ga4gtag';
 
     private $settings = null;
-    private $account_id = null;
+    private $measurement_id = null;
 
     public function getPluginName(): string
     {
