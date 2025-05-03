@@ -1,27 +1,21 @@
 <?php
 declare(strict_types=1);
 
+/**
+ * @ilCtrl_IsCalledBy ilGoogleAnalyticsConfigGUI: ilObjComponentSettingsGUI
+ */
 class ilGoogleAnalyticsConfigGUI extends ilPluginConfigGUI
 {
-    public const PLUGIN_CLASS_NAME = ilGoogleAnalyticsPlugin::class;
-    public const TAB_CONFIGURATION = "configuration";
-    public const CMD_CONFIGURE = "configure";
-    public const CMD_SAVE = "save";
 
-    private ilGoogleAnalyticsPlugin $pl;
-    private $dic;
-    private $tpl;
-
-    public function __construct()
+    public function performCommand(string $cmd): void
     {
+
         global $DIC;
         $this->dic = $DIC;
         $this->pl = ilGoogleAnalyticsPlugin::getInstance();
         $this->tpl = $DIC['tpl'];
-    }
 
-    public function performCommand(string $cmd): void
-    {
+
         $this->setTabs();
         $next_class = $this->dic->ctrl()->getNextClass($this);
 
@@ -29,87 +23,87 @@ class ilGoogleAnalyticsConfigGUI extends ilPluginConfigGUI
             default:
                 $cmd = $this->dic->ctrl()->getCmd();
 
-                switch ($cmd) {
-                    case self::CMD_CONFIGURE:
-                    case self::CMD_SAVE:
-                        $this->{$cmd}();
-                        break;
-
-                    default:
-                        break;
-                }
-                break;
+            switch ($cmd) {
+                case 'configure':
+                case 'save':
+                    $this->$cmd();
+                    break;
+                default:
+                    break;
+            }
+        break;
         }
     }
 
-
-    protected function setTabs(): void
+    public function setTabs(): void
     {
-        $this->dic->tabs()->addTab(self::TAB_CONFIGURATION, $this->pl->txt("plugin_configuration"), $this->dic->ctrl()->getLinkTargetByClass(self::class, self::CMD_CONFIGURE));
+        $this->dic->tabs()->addTab("configuration", $this->pl->txt("plugin_configuration"), $this->dic->ctrl()->getLinkTargetByClass(self::class, "configure"));
     }
 
-	public function configure()
-	{
-		global $tpl, $ilDB;
+    public function configure()
+    {
+        global $tpl;
 
-		$plugin = $this->getPluginObject();
-		$form = $this->initConfigurationForm($plugin);
+        $pl = $this->getPluginObject();
+        $form = $this->initConfigurationForm();
 
-		// get measurement_id
-		$measurement_id = $plugin->getMeasurementId();
-		if ($measurement_id == null) {
-                        $tpl->setOnScreenMessage('failure', $this->pl->txt("warning_no_measurement_id"), true);
-                }
-		// set measurement_id
-		$val = array();
-		$val["measurement_id"] = $measurement_id;
-		$form->setValuesByArray($val);
+        // get measurement_id
+        $measurement_id = $this->pl->getMeasurementId();
+        if ($measurement_id == null) {
+            $tpl->setOnScreenMessage('failure', $this->pl->txt("warning_no_measurement_id"), true);
+         }
+        // set measurement_id
+        $val = array();
+        $val["measurement_id"] = $measurement_id;
+        $form->setValuesByArray($val);
 
-		$tpl->setContent($form->getHTML());
-	}
+        $tpl->setContent($form->getHTML());
+    }
 
-	public function save(): void
-	{
-		global $tpl, $lng, $ilCtrl;
 
-		$plugin = $this->getPluginObject();
-		$form = $this->initConfigurationForm($plugin);
+    public function save(): void
+    {
+        global $tpl, $lng, $ilCtrl;
 
-		if ($form->checkInput())
-		{
-			$plugin->setMeasurementId($_POST["measurement_id"]);
-			$tpl->setOnScreenMessage('success', $lng->txt("saved_successfully"), true);
-			$ilCtrl->redirect($this, "configure");
-		}
-		else
-		{
-			$form->setValuesByPost();
-			$tpl->setContent($form->getHtml());
-		}
-	}
+        $pl = $this->getPluginObject();
+        $form = $this->initConfigurationForm();
 
-	private function initConfigurationForm($plugin)
-	{
-		global $lng, $ilCtrl;
+        if ($form->checkInput())
+        {
+            $pl->setMeasurementId($form->getInput("measurement_id"));
+            $this->tpl->setOnScreenMessage('success', $lng->txt("saved_successfully"), true);
+            $ilCtrl->redirect($this, "configure");
+        }
+        else
+        {
+            $form->setValuesByPost();
+            $tpl->setContent($form->getHtml());
+        }
+    }
 
-		// form
-		$this->dic->tabs()->activateTab(self::TAB_CONFIGURATION);
-		$form = new ilPropertyFormGUI();
-		$form->setTableWidth("50%");
-		$form->setTitle($plugin->txt("plugin_configuration"));
-		$form->setFormAction($ilCtrl->getFormAction($this));
+    public function initConfigurationForm()
+    {
+        global $lng, $ilCtrl;
+        $pl = $this->getPluginObject();
 
-		// measurement_id
-		$input = new ilTextInputGUI($plugin->txt("measurement_id"), "measurement_id");
-		$input->setRequired(true);
-		$input->setValue($plugin->getMeasurementId());
-		$input->setInfo($plugin->txt("measurement_id_info"));
-		$form->addItem($input);
+        // form
+        $this->dic->tabs()->activateTab("configuration");
+        $form = new ilPropertyFormGUI();
+        $form->setTableWidth("100%");
+        $form->setTitle($pl->txt("plugin_configuration"));
+        $form->setFormAction($ilCtrl->getFormAction($this));
 
-		// save
-		$form->addCommandButton("save", $lng->txt("save"));
+        // measurement_id
+        $input = new ilTextInputGUI($pl->txt("measurement_id"), "measurement_id");
+        $input->setRequired(true);
+        $input->setValue($pl->getMeasurementId());
+        $input->setInfo($pl->txt("measurement_id_info"));
+        $form->addItem($input);
 
-		return $form;
-	}
+        // save
+        $form->addCommandButton("save", $lng->txt("save"));
+
+        return $form;
+    }
 }
 ?>
