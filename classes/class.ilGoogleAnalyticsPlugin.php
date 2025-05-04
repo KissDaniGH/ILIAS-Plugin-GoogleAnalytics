@@ -55,7 +55,7 @@ class ilGoogleAnalyticsPlugin extends ilUserInterfaceHookPlugin
 	public function setMeasurementId(string $a_value): void
 	{
 		$this->measurement_id = strlen($a_value) > 0 ? $a_value : null;
-		$this->settings->set('measurement_id', $this->measurement_id);
+		$this->settings->set('measurement_id', $this->measurement_id ?? '');
 	}
 
 	public function getMeasurementId(): string
